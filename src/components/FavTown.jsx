@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import InfoBlock from './InfoBlock';
+import Preloader from "./Preloader";
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  height: 46px;
 `;
 
 const TownContainer = styled.div`
@@ -21,6 +23,7 @@ const Name = styled.div`
 const Temperature = styled.div`
   font-size: 26pt;
   color: #71848B;
+  display: ${props => props.show ? 'inherit' : 'none'};
 `;
 
 const Icon = styled.div`
@@ -31,6 +34,7 @@ const Icon = styled.div`
   text-align: center;
   color: #6E8084;
   font-size: 10pt;
+  display: ${props => props.show ? 'inherit' : 'none'};
   
   p {
     margin: 1px 0;
@@ -48,18 +52,20 @@ const Close = styled.button`
 `;
 
 function FavTown(props) {
-  const { name, temperature } = props;
+  const { name, temperature, loading } = props;
   return (
       <TownContainer>
         <Header>
           <Name>{name}</Name>
-          <Temperature>{temperature}</Temperature>
-          <Icon>
+          <Temperature show={!loading}>{temperature}</Temperature>
+          <Icon show={!loading}>
             <p>Иконка погоды</p>
           </Icon>
           <Close>+</Close>
         </Header>
-        <InfoBlock />
+        {loading
+          ? <Preloader small/>
+          : <InfoBlock />}
       </TownContainer>
   );
 }

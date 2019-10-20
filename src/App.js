@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Header from './components/Header';
 import CurWeather from './components/CurWeather';
 import Favourites from './components/Favourites';
+import Preloader from './components/Preloader';
 
 const Container = styled.div`
   margin: 20px 40px;
@@ -12,11 +13,14 @@ const Container = styled.div`
   }
 `;
 
-function App() {
+function App(props) {
+  const { loading } = props;
   return (
     <Container>
       <Header />
-      <CurWeather />
+      {loading
+        ? <Preloader />
+        : <CurWeather />}
       <Favourites />
     </Container>
   );
