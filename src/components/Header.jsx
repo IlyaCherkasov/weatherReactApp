@@ -8,8 +8,8 @@ const Container = styled.div`
 `;
 
 const Text = styled.div`
-  font-size: 26pt;
-  font-weight: 700;
+  font-size: 30pt;
+  font-weight: 500;
   color: #85898C;
 `;
 

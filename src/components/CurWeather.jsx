@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import InfoBlock from './InfoBlock';
 
 const Container = styled.div`
   display: flex;
@@ -38,26 +39,6 @@ const Weather = styled.div`
   margin: 40px 40px 0 0;
 `;
 
-const AddInfoBox = styled.div`
-  width: 90%;
-  background: #A7AFB1;
-  margin-top: 10px;
-  padding: 10px;
-  color: #FFFFFF;
-  display: flex;
-  justify-content: space-between;
-  
-  :first-child {
-    font-size: 14pt;
-    font-weight: 700;
-  }
-  
-  :last-child {
-    font-weight: 500;
-    font-size: 14pt;
-  }
-`;
-
 
 function CurWeather() {
   return (
@@ -70,26 +51,7 @@ function CurWeather() {
         <Weather>8°С</Weather>
       </InfoContainer>
       <InfoContainer>
-        <AddInfoBox>
-          <div>Ветер</div>
-          <div>This is value</div>
-        </AddInfoBox>
-        <AddInfoBox>
-          <div>Облачность</div>
-          <div>This is value</div>
-        </AddInfoBox>
-        <AddInfoBox>
-          <div>Давление</div>
-          <div>This is value</div>
-        </AddInfoBox>
-        <AddInfoBox>
-          <div>Влажность</div>
-          <div>This is value</div>
-        </AddInfoBox>
-        <AddInfoBox>
-          <div>Координаты</div>
-          <div>This is value</div>
-        </AddInfoBox>
+        <InfoBlock />
       </InfoContainer>
     </Container>
   );
