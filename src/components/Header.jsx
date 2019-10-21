@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { getGeolocation } from '../geolocation/actions';
 
 const Container = styled.div`
   display: flex;
@@ -24,13 +26,20 @@ const RefreshButton = styled.button`
 `;
 
 
-function Header() {
+function Header(props) {
+  const { getGeolocation } = props;
   return (
     <Container>
       <Text>Погода здесь</Text>
-      <RefreshButton>Обновить геолокацию</RefreshButton>
+      <RefreshButton onClick={() => { getGeolocation() }}>Обновить геолокацию</RefreshButton>
     </Container>
   );
 }
 
-export default Header;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = {
+  getGeolocation,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import Header from './components/Header';
 import CurWeather from './components/CurWeather';
 import Favourites from './components/Favourites';
 import Preloader from './components/Preloader';
+import { getGeolocation } from './geolocation/actions';
+import * as geolocationSelector from './geolocation/selectors';
 
 const Container = styled.div`
   margin: 20px 40px;
@@ -14,25 +17,15 @@ const Container = styled.div`
 `;
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    let userLocation = {
-      latitude: 59.860656899999995,
-      longitude: 30.317027299999996,
-    };
-    this.state = { userLocation: userLocation };
-  }
-
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition((location) => {
-      this.setState({ userLocation: location.coords })
-    });
+    this.props.getGeolocation();
   }
 
   render() {
-
-    const {loading} = this.props;
-    console.log(this.state.userLocation);
+    const { loading, error } = this.props;
+    if (error) {
+      alert(error);
+    }
     return (
       <Container>
         <Header/>
@@ -45,4 +38,13 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  loading: geolocationSelector.isLoading(state),
+  error: geolocationSelector.getError(state),
+});
+
+const mapDispatchToProps = {
+  getGeolocation,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
