@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import InfoBlock from './InfoBlock';
 import Preloader from './Preloader';
 import { rmFavourite } from '../favourites/actions';
+import { getWeatherByName } from '../weather/actions';
+import * as weatherSelector from '../weather/selectors';
 
 const Header = styled.div`
   display: flex;
@@ -38,8 +40,9 @@ const Icon = styled.div`
   font-size: 10pt;
   display: ${props => props.show ? 'inherit' : 'none'};
   
-  p {
-    margin: 1px 0;
+  img {
+    width: 50px;
+    height: 40px;
   }
 `;
 
@@ -53,29 +56,47 @@ const Close = styled.button`
   font-size: 25pt;
 `;
 
-function FavTown(props) {
-  const { name, temperature, loading, rmFavourite } = props;
-  return (
+class FavTown extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
+
+  componentDidMount() {
+    this.props.getWeatherByName(
+          this.props.name,
+          () => this.setState({ loading: false }));
+  }
+
+  render() {
+    const { weatherArray, name, rmFavourite } = this.props;
+    const { loading } = this.state;
+    const weather = weatherArray && weatherArray[name];
+    return (
       <TownContainer>
         <Header>
           <Name>{name}</Name>
-          <Temperature show={!loading}>{temperature}</Temperature>
+          <Temperature show={!loading}>{weather && Math.round(weather.main.temp - 273)}°C</Temperature>
           <Icon show={!loading}>
-            <p>Иконка погоды</p>
+            <img src={weather && `https://openweathermap.org/img/w/${weather.weather[0].icon}.png`}  alt="icon"/>
           </Icon>
           <Close onClick={() => rmFavourite(name)}>+</Close>
         </Header>
         {loading
           ? <Preloader small/>
-          : <InfoBlock />}
+          : <InfoBlock weather={weather} />}
       </TownContainer>
-  );
+    );
+  }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  weatherArray: weatherSelector.getWeatherNamed(state),
+});
 
 const mapDispatchToProps = {
   rmFavourite,
+  getWeatherByName,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavTown);

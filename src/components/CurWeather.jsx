@@ -26,9 +26,6 @@ const Icon = styled.div`
   border: 3px solid #71848B;
   margin: 40px 0 0 0;
   color: #6E8084;
-  display: flex;
-  justify-content: center;
-  vertical-align: center;
   img {
     width: 100px;
     height: 100px;
@@ -56,7 +53,7 @@ function CurWeather(props) {
         <Weather>{Math.round(weather.main.temp - 273)}°C</Weather>
       </InfoContainer>
       <InfoContainer>
-        <InfoBlock />
+        <InfoBlock weather={weather} />
       </InfoContainer>
     </Container>
   );

@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import * as weatherSelector from "../weather/selectors";
 
 const AddInfoBox = styled.div`
   width: 97.5%;
@@ -52,10 +50,4 @@ function CurWeather(props) {
   );
 }
 
-const mapStateToProps = state => ({
-  weather: weatherSelector.getWeather(state),
-});
-
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CurWeather);
+export default CurWeather;
