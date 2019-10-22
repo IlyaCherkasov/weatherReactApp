@@ -10,6 +10,9 @@ export function addFavourite(townName) {
   let favourites;
   if (localStorage.getItem('favourites')) {
     favourites = JSON.parse(localStorage.getItem('favourites'));
+    if (favourites.find(name => name === townName) !== undefined) {
+      return favourites;
+    }
   } else {
     favourites = [];
   }
