@@ -27,11 +27,11 @@ const RefreshButton = styled.button`
 
 
 function Header(props) {
-  const { getGeolocation } = props;
+  const { refresh } = props;
   return (
     <Container>
       <Text>Погода здесь</Text>
-      <RefreshButton onClick={() => { getGeolocation() }}>Обновить геолокацию</RefreshButton>
+      <RefreshButton onClick={refresh}>Обновить геолокацию</RefreshButton>
     </Container>
   );
 }

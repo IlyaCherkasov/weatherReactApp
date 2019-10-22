@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import InfoBlock from './InfoBlock';
+import * as weatherSelector from '../weather/selectors';
 
 const Container = styled.div`
   display: flex;
@@ -23,11 +25,13 @@ const Icon = styled.div`
   float: left;
   border: 3px solid #71848B;
   margin: 40px 0 0 0;
-  text-align: center;
   color: #6E8084;
-  
-  p {
-    margin: 31px 0;
+  display: flex;
+  justify-content: center;
+  vertical-align: center;
+  img {
+    width: 100px;
+    height: 100px;
   }
 `;
 
@@ -40,15 +44,16 @@ const Weather = styled.div`
 `;
 
 
-function CurWeather() {
+function CurWeather(props) {
+  const { weather } = props;
   return (
     <Container>
       <InfoContainer>
-        <PlaceName>Санкт-Петербург</PlaceName>
+        <PlaceName>{weather.name}</PlaceName>
         <Icon>
-          <p>Иконка погоды</p>
+          <img src={`https://openweathermap.org/img/w/${weather.weather[0].icon}.png`}  alt="icon"/>
         </Icon>
-        <Weather>8°С</Weather>
+        <Weather>{Math.round(weather.main.temp - 273)}°C</Weather>
       </InfoContainer>
       <InfoContainer>
         <InfoBlock />
@@ -57,4 +62,10 @@ function CurWeather() {
   );
 }
 
-export default CurWeather;
+const mapStateToProps = state => ({
+  weather: weatherSelector.getWeather(state),
+});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CurWeather);

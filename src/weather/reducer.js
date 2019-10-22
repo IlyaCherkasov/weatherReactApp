@@ -1,17 +1,22 @@
 import types from './actionTypes';
 
 const initialState = {
-  favourites: null,
+  weather: null,
+  error: null,
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case types.FAVOURITES_SUCCESS:
-    case types.FAVOURITE_ADD_SUCCESS:
-    case types.FAVOURITE_REMOVE_SUCCESS: {
+    case types.WEATHER_SUCCESS: {
       return {
         ...state,
-        favourites: action.payload,
+        weather: action.payload,
+      };
+    }
+    case types.WEATHER_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
       };
     }
     default:

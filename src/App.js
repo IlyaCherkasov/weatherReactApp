@@ -6,8 +6,8 @@ import CurWeather from './components/CurWeather';
 import Favourites from './components/Favourites';
 import Preloader from './components/Preloader';
 import { getGeolocation } from './geolocation/actions';
+import { getWeatherByGeo } from './weather/actions';
 import * as geolocationSelector from './geolocation/selectors';
-import * as favouritesSelector from './favourites/selectors';
 
 const Container = styled.div`
   margin: 20px 40px;
@@ -18,18 +18,33 @@ const Container = styled.div`
 `;
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+    this.refreshGeo = this.refreshGeo.bind(this);
+  }
+
+  refreshGeo() {
+    this.setState(
+      { loading: true },
+      () => this.props.getGeolocation(
+        () => this.props.getWeatherByGeo(
+          this.props.geolocation,
+          () => this.setState({ loading: false }))));
+  }
+
   componentDidMount() {
-    this.props.getGeolocation();
+    this.refreshGeo();
   }
 
   render() {
-    const { loading } = this.props;
+    const { loading } = this.state;
     return (
       <Container>
-        <Header/>
+        <Header refresh={() => this.refreshGeo()} />
         {loading
-          ? <Preloader/>
-          : <CurWeather/>}
+          ? <Preloader repeat={() => this.refreshGeo()} />
+          : <CurWeather />}
         <Favourites/>
       </Container>
     );
@@ -37,11 +52,12 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loading: geolocationSelector.isLoading(state) && favouritesSelector.isLoading(state),
+  geolocation: geolocationSelector.getGeolocation(state),
 });
 
 const mapDispatchToProps = {
   getGeolocation,
+  getWeatherByGeo,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
