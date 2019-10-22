@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import FavTown from './FavTown';
+import * as favouritesSelector from '../favourites/selectors';
+import { getFavourites, addFavourite } from '../favourites/actions';
 
 const Header = styled.div`
   display: flex;
@@ -42,27 +45,51 @@ const Towns = styled.div`
   flex-wrap: wrap;
 `;
 
-function Favourites(props) {
-  const { townList } = props;
-  return (
-    <>
-      <Header>
-        <Text>Избранное</Text>
-        <form style={{ display: 'flex' }}>
-          <NewCityInput placeholder="Добавить новый город" />
-          <AddButton type="submit" onClick={e => e.preventDefault()}>+</AddButton>
-        </form>
-      </Header>
-      <Towns>
-        {townList && townList.map(town => (
-          <FavTown
-            name="Moscow"
-            temperature="8°С"
-          />
-        ))}
-      </Towns>
-    </>
-  );
+class Favourites extends React.Component {
+  componentDidMount() {
+    this.props.getFavourites();
+  }
+
+  handleAddClick (e) {
+    e.preventDefault();
+    if (e.target[0].value !== '') {
+      this.props.addFavourite(e.target[0].value);
+      e.target[0].value = '';
+    }
+  }
+
+  render() {
+    const { favourites } = this.props;
+    return (
+      <>
+        <Header>
+          <Text>Избранное</Text>
+          <form style={{display: 'flex'}} onSubmit={e => this.handleAddClick(e)}>
+            <NewCityInput placeholder="Добавить новый город"/>
+            <AddButton type="submit">+</AddButton>
+          </form>
+        </Header>
+        <Towns>
+          {favourites && favourites.map(townName => (
+            <FavTown
+              key={townName}
+              name={townName}
+              temperature="8°С"
+            />
+          ))}
+        </Towns>
+      </>
+    );
+  }
 }
 
-export default Favourites;
+const mapStateToProps = state => ({
+  favourites: favouritesSelector.getFavourites(state),
+});
+
+const mapDispatchToProps = {
+  getFavourites,
+  addFavourite,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Favourites);

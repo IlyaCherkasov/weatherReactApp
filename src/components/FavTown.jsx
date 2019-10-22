@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import InfoBlock from './InfoBlock';
-import Preloader from "./Preloader";
+import Preloader from './Preloader';
+import { rmFavourite } from '../favourites/actions';
 
 const Header = styled.div`
   display: flex;
@@ -52,7 +54,7 @@ const Close = styled.button`
 `;
 
 function FavTown(props) {
-  const { name, temperature, loading } = props;
+  const { name, temperature, loading, rmFavourite } = props;
   return (
       <TownContainer>
         <Header>
@@ -61,7 +63,7 @@ function FavTown(props) {
           <Icon show={!loading}>
             <p>Иконка погоды</p>
           </Icon>
-          <Close>+</Close>
+          <Close onClick={() => rmFavourite(name)}>+</Close>
         </Header>
         {loading
           ? <Preloader small/>
@@ -70,4 +72,10 @@ function FavTown(props) {
   );
 }
 
-export default FavTown;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = {
+  rmFavourite,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavTown);

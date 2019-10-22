@@ -7,6 +7,7 @@ import Favourites from './components/Favourites';
 import Preloader from './components/Preloader';
 import { getGeolocation } from './geolocation/actions';
 import * as geolocationSelector from './geolocation/selectors';
+import * as favouritesSelector from './favourites/selectors';
 
 const Container = styled.div`
   margin: 20px 40px;
@@ -22,10 +23,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { loading, error } = this.props;
-    if (error) {
-      alert(error);
-    }
+    const { loading } = this.props;
     return (
       <Container>
         <Header/>
@@ -39,8 +37,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loading: geolocationSelector.isLoading(state),
-  error: geolocationSelector.getError(state),
+  loading: geolocationSelector.isLoading(state) && favouritesSelector.isLoading(state),
 });
 
 const mapDispatchToProps = {
