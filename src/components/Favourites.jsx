@@ -74,7 +74,6 @@ class Favourites extends React.Component {
             <FavTown
               key={townName}
               name={townName}
-              temperature="8°С"
             />
           ))}
         </Towns>

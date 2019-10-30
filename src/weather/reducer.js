@@ -8,17 +8,34 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case types.WEATHER_REQUEST: {
+      return {
+        ...state,
+        weather: null,
+        error: null,
+      };
+    }
     case types.WEATHER_SUCCESS: {
       return {
         ...state,
         weather: action.payload,
       };
     }
-    case types.WEATHER_FAILURE:
+    case types.WEATHER_FAILURE: {
+      return {
+        ...state,
+        error: action.payload.message,
+      };
+    }
     case types.WEATHER_NAME_FAILURE: {
       return {
         ...state,
-        error: action.payload,
+        namedWeather: {
+          ...state.namedWeather,
+          [action.payload.name]: {
+            error: action.payload.error.message,
+          },
+        }
       };
     }
     case types.WEATHER_NAME_SUCCESS: {
@@ -26,7 +43,9 @@ export default function (state = initialState, action) {
         ...state,
         namedWeather: {
           ...state.namedWeather,
-          [action.payload.name]: action.payload.weather
+          [action.payload.name]: {
+            weather: action.payload.weather,
+          },
         }
       };
     }

@@ -8,6 +8,7 @@ import Preloader from './components/Preloader';
 import { getGeolocation } from './geolocation/actions';
 import { getWeatherByGeo } from './weather/actions';
 import * as geolocationSelector from './geolocation/selectors';
+import * as weatherSelector from './weather/selectors';
 
 const Container = styled.div`
   margin: 20px 40px;
@@ -39,11 +40,12 @@ class App extends React.Component {
 
   render() {
     const { loading } = this.state;
+    const { error } = this.props;
     return (
       <Container>
         <Header refresh={() => this.refreshGeo()} />
-        {loading
-          ? <Preloader repeat={() => this.refreshGeo()} />
+        {loading || error
+          ? <Preloader error={error} repeat={() => this.refreshGeo()} />
           : <CurWeather />}
         <Favourites/>
       </Container>
@@ -53,6 +55,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   geolocation: geolocationSelector.getGeolocation(state),
+  error: weatherSelector.getError(state),
 });
 
 const mapDispatchToProps = {

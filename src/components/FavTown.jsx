@@ -60,30 +60,37 @@ class FavTown extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loading: true };
+    this.resendRequest = this.resendRequest.bind(this);
   }
 
   componentDidMount() {
-    this.props.getWeatherByName(
-          this.props.name,
-          () => this.setState({ loading: false }));
+    this.resendRequest(this.props.name);
+  }
+
+  resendRequest(name) {
+    this.setState({ loading: true },
+      () => this.props.getWeatherByName(
+        name,
+        () => this.setState({ loading: false })))
   }
 
   render() {
     const { weatherArray, name, rmFavourite } = this.props;
     const { loading } = this.state;
-    const weather = weatherArray && weatherArray[name];
+    const weather = !loading && weatherArray && weatherArray[name].weather;
+    const error = !loading && weatherArray && weatherArray[name].error;
     return (
       <TownContainer>
         <Header>
           <Name>{name}</Name>
-          <Temperature show={!loading}>{weather && Math.round(weather.main.temp - 273)}°C</Temperature>
-          <Icon show={!loading}>
-            <img src={weather && `https://openweathermap.org/img/w/${weather.weather[0].icon}.png`}  alt="icon"/>
+          <Temperature show={!loading && !error}>{weather && Math.round(weather.main.temp - 273)}°C</Temperature>
+          <Icon show={!loading && !error}>
+            <img src={weather ? `https://openweathermap.org/img/w/${weather.weather[0].icon}.png` : null}  alt="icon"/>
           </Icon>
           <Close onClick={() => rmFavourite(name)}>+</Close>
         </Header>
-        {loading
-          ? <Preloader small/>
+        {loading || error
+          ? <Preloader small error={error} repeat={() => this.resendRequest(name)} />
           : <InfoBlock weather={weather} />}
       </TownContainer>
     );

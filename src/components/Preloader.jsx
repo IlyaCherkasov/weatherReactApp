@@ -28,10 +28,10 @@ const RefreshButton = styled.button`
 `;
 
 function Preloader(props) {
-  const { small, repeat } = props;
+  const { small, repeat, error } = props;
   return (
     <Container>
-      <Text small={small}>Подождите, данные загружаются</Text>
+      <Text small={small}>{error ? error : 'Подождите, данные загружаются'}</Text>
       <RefreshButton small={small} onClick={repeat}><Refresh /></RefreshButton>
     </Container>
   );
