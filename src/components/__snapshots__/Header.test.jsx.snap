@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should render correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.c1 {
+  font-size: 30pt;
+  font-weight: 500;
+  color: #85898C;
+}
+
+.c2 {
+  background-color: #C9D2D7;
+  color: #869197;
+  border: none;
+  border-radius: 5px;
+  margin-left: calc(50% - 350px);
+  padding: 15px 45px;
+  font-weight: 600;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    Погода здесь
+  </div>
+  <button
+    class="c2"
+  >
+    Обновить геолокацию
+  </button>
+</div>
+`;

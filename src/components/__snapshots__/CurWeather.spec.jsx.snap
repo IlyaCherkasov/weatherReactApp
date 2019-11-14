@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurWeather component should render correctly 1`] = `
+.c5 {
+  width: 97.5%;
+  background: #A7AFB1;
+  margin-top: 10px;
+  padding: 10px;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c5 div:first-child {
+  font-size: 14pt;
+  font-weight: 700;
+}
+
+.c5 div:last-child {
+  font-weight: 500;
+  font-size: 14pt;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c1 {
+  width: 45%;
+}
+
+.c2 {
+  font-size: 30pt;
+  font-weight: 700;
+  color: #71848B;
+}
+
+.c3 {
+  width: 100px;
+  height: 100px;
+  float: left;
+  border: 3px solid #71848B;
+  margin: 40px 0 0 0;
+  color: #6E8084;
+}
+
+.c3 img {
+  width: 100px;
+  height: 100px;
+}
+
+.c4 {
+  float: right;
+  font-size: 80pt;
+  line-height: 80px;
+  color: #869197;
+  margin: 40px 40px 0 0;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+    >
+      SPb
+    </div>
+    <div
+      class="c3"
+    >
+      <img
+        alt="icon"
+        src="https://openweathermap.org/img/w/10.png"
+      />
+    </div>
+    <div
+      class="c4"
+    >
+      10
+      °C
+    </div>
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c5"
+    >
+      <div>
+        Ветер
+      </div>
+      <div>
+        10
+         м/с, 
+        10
+        °
+      </div>
+    </div>
+    <div
+      class="c5"
+    >
+      <div>
+        Облачность
+      </div>
+      <div>
+        10
+        %
+      </div>
+    </div>
+    <div
+      class="c5"
+    >
+      <div>
+        Давление
+      </div>
+      <div>
+        10
+         Бар
+      </div>
+    </div>
+    <div
+      class="c5"
+    >
+      <div>
+        Влажность
+      </div>
+      <div>
+        10
+        %
+      </div>
+    </div>
+    <div
+      class="c5"
+    >
+      <div>
+        Координаты
+      </div>
+      <div>
+        [
+        10
+        , 
+        10
+        ]
+      </div>
+    </div>
+  </div>
+</div>
+`;

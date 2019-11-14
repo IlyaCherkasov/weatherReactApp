@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoBlock component should render correctly 1`] = `
+.c0 {
+  width: 97.5%;
+  background: #A7AFB1;
+  margin-top: 10px;
+  padding: 10px;
+  color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c0 div:first-child {
+  font-size: 14pt;
+  font-weight: 700;
+}
+
+.c0 div:last-child {
+  font-weight: 500;
+  font-size: 14pt;
+}
+
+<div
+  class="c0"
+>
+  <div>
+    Ветер
+  </div>
+  <div>
+    10
+     м/с, 
+    10
+    °
+  </div>
+</div>
+`;
