@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import Favourites from './Favourites';
 import { store } from '../helpers/store';
 
+// TODO: handleSubmit
 describe('Favourites component', () => {
   it('should render correctly', () => {
     const { container } = render(

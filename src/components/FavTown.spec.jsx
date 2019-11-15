@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import FavTown from './FavTown';
 import { store } from '../helpers/store';
 
+// TODO: test different combinations of error and loading
 describe('FavTown component', () => {
   it('should render correctly', async () => {
     const { container } = render(
