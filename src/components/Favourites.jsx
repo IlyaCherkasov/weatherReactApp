@@ -64,7 +64,7 @@ class Favourites extends React.Component {
       <>
         <Header>
           <Text>Избранное</Text>
-          <form style={{display: 'flex'}} onSubmit={e => this.handleAddClick(e)}>
+          <form style={{display: 'flex'}} onSubmit={e => this.handleAddClick(e)} data-testid="form">
             <NewCityInput placeholder="Добавить новый город"/>
             <AddButton type="submit">+</AddButton>
           </form>

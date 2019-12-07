@@ -48,6 +48,7 @@ exports[`Favourites component should render correctly 1`] = `
     Избранное
   </div>
   <form
+    data-testid="form"
     style="display: flex;"
   >
     <input
@@ -56,6 +57,33 @@ exports[`Favourites component should render correctly 1`] = `
     />
     <button
       class="c3"
+      type="submit"
+    >
+      +
+    </button>
+  </form>
+</div>
+`;
+
+exports[`Favourites component should render correctly 2`] = `
+<div
+  class="sc-iwsKbI dUEfaJ"
+>
+  <div
+    class="sc-gZMcBi khikKQ"
+  >
+    Избранное
+  </div>
+  <form
+    data-testid="form"
+    style="display: flex;"
+  >
+    <input
+      class="sc-gqjmRU eufcnk"
+      placeholder="Добавить новый город"
+    />
+    <button
+      class="sc-VigVT djdFhm"
       type="submit"
     >
       +
