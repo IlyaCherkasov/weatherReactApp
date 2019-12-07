@@ -1,6 +1,222 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Favourites component should render correctly 1`] = `
+exports[`Favourites component should render correctly with children 1`] = `
+.c11 {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.c12 {
+  font-size: 25px;
+  text-align: center;
+  color: #6F8185;
+}
+
+.c13 {
+  width: 250px;
+  height: 80px;
+  margin-top: 20px;
+  background-color: #C9D2D7;
+  border: none;
+}
+
+.c13 svg {
+  width: 50px;
+  height: 50px;
+  fill: #6F8185;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 46px;
+}
+
+.c5 {
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+.c7 {
+  font-size: 26pt;
+  font-weight: 700;
+  color: #71848B;
+}
+
+.c8 {
+  font-size: 26pt;
+  color: #71848B;
+  display: none;
+}
+
+.c9 {
+  width: 50px;
+  height: 40px;
+  float: left;
+  border: 3px solid #71848B;
+  text-align: center;
+  color: #6E8084;
+  font-size: 10pt;
+  display: none;
+}
+
+.c9 img {
+  width: 50px;
+  height: 40px;
+}
+
+.c10 {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border: none;
+  background-color: #708189;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 0 14px;
+  font-size: 25pt;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.c1 {
+  font-size: 30pt;
+  font-weight: 500;
+  color: #85898C;
+}
+
+.c2 {
+  border: none;
+  background-color: #F1F1F1;
+  color: #8B9396;
+  padding: 0 12px;
+  width: 400px;
+  margin-right: 20px;
+  border-radius: 2px;
+  height: 100%;
+}
+
+.c3 {
+  border: none;
+  background-color: #708189;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 0 14px;
+  font-size: 25pt;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 40px;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      Избранное
+    </div>
+    <form
+      data-testid="form"
+      style="display: flex;"
+    >
+      <input
+        class="c2"
+        placeholder="Добавить новый город"
+      />
+      <button
+        class="c3"
+        type="submit"
+      >
+        +
+      </button>
+    </form>
+  </div>
+  <div
+    class="c4"
+  >
+    <div
+      class="c5"
+    >
+      <div
+        class="c6"
+      >
+        <div
+          class="c7"
+        >
+          Moscow
+        </div>
+        <div
+          class="c8"
+        >
+          °C
+        </div>
+        <div
+          class="c9"
+        >
+          <img
+            alt="icon"
+          />
+        </div>
+        <button
+          class="c10"
+        >
+          +
+        </button>
+      </div>
+      <div
+        class="c11"
+      >
+        <div
+          class="c12"
+        >
+          Подождите, данные загружаются
+        </div>
+        <button
+          class="c13"
+        >
+          <svg>
+            Refresh.svg
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Favourites component should render correctly without children 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -57,33 +273,6 @@ exports[`Favourites component should render correctly 1`] = `
     />
     <button
       class="c3"
-      type="submit"
-    >
-      +
-    </button>
-  </form>
-</div>
-`;
-
-exports[`Favourites component should render correctly 2`] = `
-<div
-  class="sc-iwsKbI dUEfaJ"
->
-  <div
-    class="sc-gZMcBi khikKQ"
-  >
-    Избранное
-  </div>
-  <form
-    data-testid="form"
-    style="display: flex;"
-  >
-    <input
-      class="sc-gqjmRU eufcnk"
-      placeholder="Добавить новый город"
-    />
-    <button
-      class="sc-VigVT djdFhm"
       type="submit"
     >
       +
