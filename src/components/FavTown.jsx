@@ -77,14 +77,14 @@ class FavTown extends React.Component {
   render() {
     const { weatherArray, name, rmFavourite } = this.props;
     const { loading } = this.state;
-    const weather = !loading && weatherArray && weatherArray[name].weather;
-    const error = !loading && weatherArray && weatherArray[name].error;
+    const weather = weatherArray && weatherArray[name].weather;
+    const error = weatherArray && weatherArray[name].error;
     return (
       <TownContainer>
         <Header>
           <Name>{name}</Name>
-          <Temperature show={!loading && !error}>{weather && Math.round(weather.main.temp - 273)}°C</Temperature>
-          <Icon show={!loading && !error}>
+          <Temperature show={!(loading || error)}>{weather && Math.round(weather.main.temp - 273)}°C</Temperature>
+          <Icon show={!(loading || error)}>
             <img src={weather ? `https://openweathermap.org/img/w/${weather.weather[0].icon}.png` : null}  alt="icon"/>
           </Icon>
           <Close onClick={() => rmFavourite(name)}>+</Close>

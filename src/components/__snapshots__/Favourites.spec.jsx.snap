@@ -180,6 +180,7 @@ exports[`Favourites component should render correctly with children 1`] = `
         <div
           class="c8"
         >
+          10
           °C
         </div>
         <div
@@ -187,6 +188,7 @@ exports[`Favourites component should render correctly with children 1`] = `
         >
           <img
             alt="icon"
+            src="https://openweathermap.org/img/w/10.png"
           />
         </div>
         <button
