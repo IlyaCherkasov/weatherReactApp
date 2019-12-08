@@ -33,7 +33,8 @@ const AddButton = styled.button`
   background-color: #708189;
   color: #ffffff;
   border-radius: 50%;
-  padding: 0 14px;
+  width: 50px;
+  height: 50px;
   font-size: 25pt;
 `;
 

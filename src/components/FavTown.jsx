@@ -77,8 +77,8 @@ class FavTown extends React.Component {
   render() {
     const { weatherArray, name, rmFavourite } = this.props;
     const { loading } = this.state;
-    const weather = weatherArray && weatherArray[name].weather;
-    const error = weatherArray && weatherArray[name].error;
+    const weather = weatherArray && weatherArray[name] && weatherArray[name].weather;
+    const error = weatherArray && weatherArray[name] && weatherArray[name].error;
     return (
       <TownContainer>
         <Header>
