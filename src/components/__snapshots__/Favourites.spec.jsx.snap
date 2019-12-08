@@ -118,7 +118,8 @@ exports[`Favourites component should render correctly with children 1`] = `
   background-color: #708189;
   color: #ffffff;
   border-radius: 50%;
-  padding: 0 14px;
+  width: 50px;
+  height: 50px;
   font-size: 25pt;
 }
 
@@ -253,7 +254,8 @@ exports[`Favourites component should render correctly without children 1`] = `
   background-color: #708189;
   color: #ffffff;
   border-radius: 50%;
-  padding: 0 14px;
+  width: 50px;
+  height: 50px;
   font-size: 25pt;
 }
 

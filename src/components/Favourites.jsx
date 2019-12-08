@@ -54,7 +54,7 @@ class Favourites extends React.Component {
   handleAddClick (e) {
     e.preventDefault();
     if (e.target[0].value !== '') {
-      this.props.addFavourite(e.target[0].value);
+      this.props.addFavourite(e.target[0].value, this.props.getFavourites);
       e.target[0].value = '';
     }
   }
@@ -71,7 +71,7 @@ class Favourites extends React.Component {
           </form>
         </Header>
         <Towns>
-          {favourites && favourites.map(townName => (
+          {favourites  && favourites.map(townName => (
             <FavTown
               key={townName}
               name={townName}
