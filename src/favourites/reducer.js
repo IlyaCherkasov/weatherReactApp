@@ -28,6 +28,12 @@ export default function (state = initialState, action) {
         favourites: favourites.length === 0 ? null : favourites,
       }
     }
+    case types.FAVOURITE_ADD_SUCCESS: {
+      return {
+        ...state,
+        favourites: [...state.favourites, action.payload],
+      }
+    }
     default:
       return state;
   }

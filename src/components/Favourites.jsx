@@ -54,7 +54,7 @@ class Favourites extends React.Component {
   handleAddClick (e) {
     e.preventDefault();
     if (e.target[0].value !== '') {
-      this.props.addFavourite(e.target[0].value, this.props.getFavourites);
+      this.props.addFavourite(e.target[0].value);
       e.target[0].value = '';
     }
   }

@@ -8,12 +8,11 @@ export const getFavourites = () => (dispatch) => {
       .catch(x => dispatch({ type: types.FAVOURITES_FAILURE, payload: x.message }));
 };
 
-export const addFavourite = (townName, callback) => (dispatch) => {
+export const addFavourite = (townName) => (dispatch) => {
   dispatch({ type: types.FAVOURITE_ADD_REQUEST });
   services.addFavourite(townName)
       .then(() => dispatch({ type: types.FAVOURITE_ADD_SUCCESS, payload: townName }))
-      .catch(x => dispatch({ type: types.FAVOURITE_ADD_FAILURE, payload: x.message }))
-      .finally(() => callback());
+      .catch(x => dispatch({ type: types.FAVOURITE_ADD_FAILURE, payload: x.message }));
 };
 
 export const rmFavourite = (townName) => (dispatch) => {
