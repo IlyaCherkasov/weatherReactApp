@@ -20,6 +20,7 @@
     "start": "REACT_APP_MODE=api react-scripts start",
     "start:node-oriented": "REACT_APP_MODE=node true react-scripts start",
     "test": "react-scripts test",
+    "build": "react-scripts build",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
