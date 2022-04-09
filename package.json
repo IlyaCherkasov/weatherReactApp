@@ -1,10 +1,12 @@
 {
   "name": "react-weather-app",
+  "homepage": "https://ilyacherkasov.github.io/weatherReactApp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/react": "13.0.0",
     "axios": "0.26.1",
+    "gh-pages": "3.2.3",
     "jest-styled-components": "7.0.8",
     "react": "18.0.0",
     "react-dom": "18.0.0",
@@ -17,7 +19,9 @@
   "scripts": {
     "start": "REACT_APP_MODE=api react-scripts start",
     "start:node-oriented": "REACT_APP_MODE=node true react-scripts start",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
