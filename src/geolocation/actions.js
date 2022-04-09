@@ -6,14 +6,12 @@ export const getGeolocation = (callback) => (dispatch) => {
   services.getGeolocation().getCurrentPosition(
     location => {
       dispatch({ type: types.GEOLOCATION_SUCCESS, payload: location.coords });
-      callback();
     },
     () => {
       dispatch({
         type: types.GEOLOCATION_FAILURE,
         payload: 'Geolocation denied. Setting default value',
       });
-      callback();
     }
   );
 };

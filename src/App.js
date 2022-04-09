@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from './components/Header';
 import CurWeather from './components/CurWeather';
 import Favorites from './components/Favorites';
@@ -18,49 +18,46 @@ const Container = styled.div`
   }
 `;
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-    this.refreshGeo = this.refreshGeo.bind(this);
+const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  const error = useSelector(weatherSelector.getError);
+  const geolocation = useSelector(geolocationSelector.getGeolocation);
+  const weather = useSelector(weatherSelector.getWeather);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getGeolocation());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (geolocation) dispatch(getWeatherByGeo(geolocation));
+  }, [dispatch, geolocation]);
+
+  useEffect(() => {
+    if (weather) setLoading(false);
+  }, [weather]);
+
+  const refreshLocation = () => {
+    setLoading(true);
+    dispatch(getGeolocation());
   }
 
-  refreshGeo() {
-    this.setState(
-      { loading: true },
-      () => this.props.getGeolocation(
-        () => this.props.getWeatherByGeo(
-          this.props.geolocation,
-          () => this.setState({ loading: false }))));
+  const tryAgain = () => {
+    setLoading(true);
+    dispatch(getWeatherByGeo(geolocation));
   }
 
-  componentDidMount() {
-    this.refreshGeo();
-  }
-
-  render() {
-    const { loading } = this.state;
-    const { error } = this.props;
-    return (
-      <Container>
-        <Header refresh={() => this.refreshGeo()} />
-        {loading || error
-          ? <Preloader error={error} repeat={() => this.refreshGeo()} />
-          : <CurWeather />}
-        <Favorites/>
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      <Header refresh={refreshLocation} />
+      {loading || error
+        ? <Preloader error={error} repeat={tryAgain} />
+        : <CurWeather />}
+      <Favorites/>
+    </Container>
+  );
 }
 
-const mapStateToProps = state => ({
-  geolocation: geolocationSelector.getGeolocation(state),
-  error: weatherSelector.getError(state),
-});
-
-const mapDispatchToProps = {
-  getGeolocation,
-  getWeatherByGeo,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

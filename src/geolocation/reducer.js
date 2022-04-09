@@ -1,7 +1,7 @@
 import types from './actionTypes';
 
 const initialState = {
-  geolocation: {},
+  geolocation: null,
 };
 
 export default function reducer(state = initialState, action) {
