@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import geolocation from '../geolocation/reducer';
-import favourites from '../favourites/reducer';
+import favorites from '../favorites/reducer';
 import weather from '../weather/reducer';
 
 const appReducer = combineReducers({
   geolocation,
-  favourites,
+  favorites,
   weather,
 });
 

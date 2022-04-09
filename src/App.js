@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Header from './components/Header';
 import CurWeather from './components/CurWeather';
-import Favourites from './components/Favourites';
+import Favorites from './components/Favorites';
 import Preloader from './components/Preloader';
 import { getGeolocation } from './geolocation/actions';
 import { getWeatherByGeo } from './weather/actions';
@@ -47,7 +47,7 @@ class App extends React.Component {
         {loading || error
           ? <Preloader error={error} repeat={() => this.refreshGeo()} />
           : <CurWeather />}
-        <Favourites/>
+        <Favorites/>
       </Container>
     );
   }

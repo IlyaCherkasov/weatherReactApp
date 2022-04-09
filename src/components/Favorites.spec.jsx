@@ -2,11 +2,11 @@ import React from 'react';
 import 'jest-styled-components';
 import { fireEvent } from '@testing-library/react';
 import { renderWithRedux as render } from "../helpers/renderWith";
-import Favourites from './Favourites';
+import Favorites from './Favorites';
 
-describe('Favourites component', () => {
+describe('Favorites component', () => {
   it('should render correctly without children', () => {
-    const { container, getByPlaceholderText, getByTestId } = render(<Favourites />, {});
+    const { container, getByPlaceholderText, getByTestId } = render(<Favorites />, {});
     expect(container.firstChild).toMatchSnapshot();
     fireEvent.change(getByPlaceholderText('Добавить новый город'), { target: { value: 'Moscow' }});
     expect(getByPlaceholderText('Добавить новый город').value).toBe('Moscow');
@@ -15,8 +15,8 @@ describe('Favourites component', () => {
   });
 
   it('should render correctly with children', () => {
-    const { container } = render(<Favourites />, { initialState: {
-      favourites: { favourites: ['Moscow'] },
+    const { container } = render(<Favorites />, { initialState: {
+      favorites: { favorites: ['Moscow'] },
       weather: { namedWeather: {
           Moscow:  { weather: {
               main: { temp: 283, pressure: 10000, humidity: 10 },

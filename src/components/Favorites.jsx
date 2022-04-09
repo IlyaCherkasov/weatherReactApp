@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import FavTown from './FavTown';
-import * as favouritesSelector from '../favourites/selectors';
-import { getFavourites, addFavourite } from '../favourites/actions';
+import * as favoritesSelector from '../favorites/selectors';
+import { getFavorites, addFavorite } from '../favorites/actions';
 
 const Header = styled.div`
   display: flex;
@@ -46,21 +46,21 @@ const Towns = styled.div`
   flex-wrap: wrap;
 `;
 
-class Favourites extends React.Component {
+class Favorites extends React.Component {
   componentDidMount() {
-    this.props.getFavourites();
+    this.props.getFavorites();
   }
 
   handleAddClick (e) {
     e.preventDefault();
     if (e.target[0].value !== '') {
-      this.props.addFavourite(e.target[0].value);
+      this.props.addFavorite(e.target[0].value);
       e.target[0].value = '';
     }
   }
 
   render() {
-    const { favourites } = this.props;
+    const { favorites } = this.props;
     return (
       <>
         <Header>
@@ -71,7 +71,7 @@ class Favourites extends React.Component {
           </form>
         </Header>
         <Towns>
-          {favourites  && favourites.map(townName => (
+          {favorites  && favorites.map(townName => (
             <FavTown
               key={townName}
               name={townName}
@@ -84,12 +84,12 @@ class Favourites extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  favourites: favouritesSelector.getFavourites(state),
+  favorites: favoritesSelector.getFavorites(state),
 });
 
 const mapDispatchToProps = {
-  getFavourites,
-  addFavourite,
+  getFavorites,
+  addFavorite,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Favourites);
+export default connect(mapStateToProps, mapDispatchToProps)(Favorites);

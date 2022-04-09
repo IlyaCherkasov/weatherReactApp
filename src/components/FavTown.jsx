@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import InfoBlock from './InfoBlock';
 import Preloader from './Preloader';
-import { rmFavourite } from '../favourites/actions';
+import { rmFavorite } from '../favorites/actions';
 import { getWeatherByName } from '../weather/actions';
 import * as weatherSelector from '../weather/selectors';
 
@@ -75,7 +75,7 @@ class FavTown extends React.Component {
   }
 
   render() {
-    const { weatherArray, name, rmFavourite } = this.props;
+    const { weatherArray, name, rmFavorite } = this.props;
     const { loading } = this.state;
     const weather = weatherArray && weatherArray[name] && weatherArray[name].weather;
     const error = weatherArray && weatherArray[name] && weatherArray[name].error;
@@ -87,7 +87,7 @@ class FavTown extends React.Component {
           <Icon show={!(loading || error)}>
             <img src={weather ? `https://openweathermap.org/img/w/${weather.weather[0].icon}.png` : null}  alt="icon"/>
           </Icon>
-          <Close onClick={() => rmFavourite(name)}>+</Close>
+          <Close onClick={() => rmFavorite(name)}>+</Close>
         </Header>
         {loading || error
           ? <Preloader small error={error} repeat={() => this.resendRequest(name)} />
@@ -102,7 +102,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  rmFavourite,
+  rmFavorite,
   getWeatherByName,
 };
 

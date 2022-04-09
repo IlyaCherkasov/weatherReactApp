@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Favourites component should render correctly with children 1`] = `
+exports[`Favorites component should render correctly with children 1`] = `
 .c11 {
   width: 100%;
   text-align: center;
@@ -219,7 +219,7 @@ exports[`Favourites component should render correctly with children 1`] = `
 </div>
 `;
 
-exports[`Favourites component should render correctly without children 1`] = `
+exports[`Favorites component should render correctly without children 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
