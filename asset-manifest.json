@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/weatherReactApp/static/js/main.498059e5.js",
+    "static/media/Refresh.svg": "/weatherReactApp/static/media/Refresh.b8cd1315f55d0450a0eb0df507327798.svg",
+    "index.html": "/weatherReactApp/index.html",
+    "main.498059e5.js.map": "/weatherReactApp/static/js/main.498059e5.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.498059e5.js"
+  ]
+}
